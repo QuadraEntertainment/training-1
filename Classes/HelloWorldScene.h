@@ -1,4 +1,4 @@
-#ifndef __HELLOWORLD_SCENE_H__
+﻿#ifndef __HELLOWORLD_SCENE_H__
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
@@ -12,9 +12,16 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+
+	//void HelloWorld::deleteSprite(Ref* pSender, CCSprite* sprite);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+private:
+	//bool		m_ButtonActive;
+	//CCSprite*	m_TestSprite;
+	//CCSprite*	m_ButtonSprite;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

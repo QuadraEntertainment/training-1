@@ -1,4 +1,4 @@
-#include "HelloWorldScene.h"
+﻿#include "HelloWorldScene.h"
 
 USING_NS_CC;
 
@@ -71,7 +71,32 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+
+	//m_TestSprite = Sprite::create("Koala.jpg");
+	//m_TestSprite->setPosition(Vec2(m_TestSprite->getContentSize().width / 2, visibleSize.height / 2 + origin.y));
+	//this->addChild(m_TestSprite, 1);
+
+	auto test_sprite = Sprite::create("Koala.jpg");
+
+	test_sprite->setPosition(Vec2(test_sprite->getContentSize( ).width/2, visibleSize.height/2 + origin.y));
+
+	this->addChild(test_sprite, 0);
     
+	auto buttonItem = MenuItemImage::create(
+		"ButtonPlay.png",
+		"ButtonStop.png",
+		CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+
+	//auto button_sprite = Sprite::create("Button.png");
+
+	buttonItem->setPosition(Vec2(visibleSize.width - buttonItem->getContentSize().width / 2, visibleSize.height/2 + origin.y));
+	//メニューを作成 自動解放オブジェクト
+	auto button_menu = Menu::create(buttonItem, NULL);
+
+	button_menu->setPosition(Point::ZERO);
+	// メニューを追加
+	this->addChild(button_menu, 1);
+
     return true;
 }
 
@@ -84,3 +109,8 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+
+//void HelloWorld::deleteSprite(Ref* pSender, CCSprite* sprite)
+//{
+//	sprite->removeFromParentAndCleanup(true);
+//}
