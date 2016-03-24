@@ -20,80 +20,77 @@ Scene* HelloWorld::createScene()
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
-    if ( !Layer::init() )
-    {
-        return false;
-    }
-    
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	//////////////////////////////
+	// 1. super init first
+	if (!Layer::init())
+	{
+		return false;
+	}
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
+	/////////////////////////////
+	// 2. add a menu item with "X" image, which is clicked to quit the program
+	//    you may modify it.
 
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
+	// add a "close" icon to exit the progress. it's an autorelease object
+	auto closeItem = MenuItemImage::create(
+		"CloseNormal.png",
+		"CloseSelected.png",
+		CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
 
-    /////////////////////////////
-    // 3. add your codes below...
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width / 2,
+		origin.y + closeItem->getContentSize().height / 2));
 
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
+	// create menu, it's an autorelease object
+	auto menu = Menu::create(closeItem, NULL);
+	menu->setPosition(Vec2::ZERO);
+	this->addChild(menu, 1);
 
-    // add the label as a child to this layer
-    this->addChild(label, 1);
+	/////////////////////////////
+	// 3. add your codes below...
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+	// add a label shows "Hello World"
+	// create and initialize a label
 
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+	auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
 
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+	// position the label on the center of the screen
+	label->setPosition(Vec2(origin.x + visibleSize.width / 2,
+		origin.y + visibleSize.height - label->getContentSize().height));
 
-	//m_TestSprite = Sprite::create("Koala.jpg");
-	//m_TestSprite->setPosition(Vec2(m_TestSprite->getContentSize().width / 2, visibleSize.height / 2 + origin.y));
-	//this->addChild(m_TestSprite, 1);
+	// add the label as a child to this layer
+	this->addChild(label, 1);
 
-	auto test_sprite = Sprite::create("Koala.jpg");
+	// add "HelloWorld" splash screen"
+	auto sprite = Sprite::create("HelloWorld.png");
 
-	test_sprite->setPosition(Vec2(test_sprite->getContentSize( ).width/2, visibleSize.height/2 + origin.y));
+	// position the sprite on the center of the screen
+	sprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
-	this->addChild(test_sprite, 0);
-    
+	// add the sprite as a child to this layer
+	this->addChild(sprite, 0);
+
+	m_TestSprite = Sprite::create("Koala.jpg");
+
+	m_TestSprite->setPosition(Vec2(m_TestSprite->getContentSize().width / 2, visibleSize.height / 2 + origin.y));
+
+	this->addChild(m_TestSprite, 0);
+
+	// ボタンを押すと、テスト画像を消す処理を行う
 	auto buttonItem = MenuItemImage::create(
 		"ButtonPlay.png",
 		"ButtonStop.png",
-		CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-
-	//auto button_sprite = Sprite::create("Button.png");
+		CC_CALLBACK_1(HelloWorld::deleteTestSprite, this));
 
 	buttonItem->setPosition(Vec2(visibleSize.width - buttonItem->getContentSize().width / 2, visibleSize.height/2 + origin.y));
+	
 	//メニューを作成 自動解放オブジェクト
 	auto button_menu = Menu::create(buttonItem, NULL);
 
 	button_menu->setPosition(Point::ZERO);
+	
 	// メニューを追加
 	this->addChild(button_menu, 1);
 
@@ -110,7 +107,11 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #endif
 }
 
-//void HelloWorld::deleteSprite(Ref* pSender, CCSprite* sprite)
-//{
-//	sprite->removeFromParentAndCleanup(true);
-//}
+void HelloWorld::deleteTestSprite(Ref* pSender)
+{
+	if (m_TestSprite == NULL)	return;
+
+	// 親クラスからオブジェクトを削除
+	m_TestSprite->removeFromParentAndCleanup(true);
+	m_TestSprite = NULL;
+}
