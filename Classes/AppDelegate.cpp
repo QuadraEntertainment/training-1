@@ -1,4 +1,6 @@
 #include "AppDelegate.h"
+#include "FilePath_generated.h"
+
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
@@ -73,6 +75,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     register_all_packages();
+
+	// add Resource File Path
+	addAllDirectoriesFilePath();
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
