@@ -2,7 +2,7 @@
 #include "FilePath_generated.h"
 
 #include "HelloWorldScene.h"
-#include "proj.win32\title.h"
+#include "CTitleScene.h"
 
 USING_NS_CC;
 
@@ -82,7 +82,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     //auto scene = HelloWorld::createScene();
-	auto scene = CTitle::createScene();
+	auto scene = CTitleScene::createScene();
 
     // run
     director->runWithScene(scene);
