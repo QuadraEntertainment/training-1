@@ -3,7 +3,7 @@
 USING_NS_CC;
 
 HelloWorld::HelloWorld()
-	: m_TestSprite(NULL)	// 初期化
+	: m_TestSprite(nullptr)	// 初期化
 {
 }
 
@@ -59,7 +59,7 @@ bool HelloWorld::init()
 		origin.y + closeItem->getContentSize().height / 2));
 
 	// create menu, it's an autorelease object
-	auto menu = Menu::create(closeItem, NULL);
+	auto menu = Menu::create(closeItem, nullptr);
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu, 1);
 
@@ -102,7 +102,7 @@ bool HelloWorld::init()
 	buttonItem->setPosition(Vec2(visibleSizeOrigin.x - buttonItem->getContentSize().width / 2, visibleCenterOrigin.y));
 	
 	//メニューを作成 自動解放オブジェクト
-	auto button_menu = Menu::create(buttonItem, NULL);
+	auto button_menu = Menu::create(buttonItem, nullptr);
 
 	button_menu->setPosition(Point::ZERO);
 	
@@ -124,9 +124,9 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::deleteTestSprite(Ref* pSender)
 {
-	if (m_TestSprite == NULL)	return;
+	if (m_TestSprite == nullptr)	return;
 
 	// 親クラスからオブジェクトを削除
 	m_TestSprite->removeFromParentAndCleanup(true);
-	m_TestSprite = NULL;
+	m_TestSprite = nullptr;
 }
