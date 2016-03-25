@@ -21,7 +21,7 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="title.cpp">
+    <ClCompile Include="..\Classes\CTitleScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="title.h">
+    <ClInclude Include="..\Classes\CTitleScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,16 +1,16 @@
-#include "title.h"
+#include "CTitleScene.h"
 
 USING_NS_CC;
 
-CTitle::CTitle()
+CTitleScene::CTitleScene()
 {
 }
 
 // ƒV[ƒ“‚Ìì¬
-Scene* CTitle::createScene()
+Scene* CTitleScene::createScene()
 {
 	auto scene = Scene::create();
-	auto layer = CTitle::create();
+	auto layer = CTitleScene::create();
 
 	scene->addChild(layer);
 
@@ -18,7 +18,7 @@ Scene* CTitle::createScene()
 }
 
 // ‰Šú‰»
-bool CTitle::init()
+bool CTitleScene::init()
 {
 	if (!Layer::init()) {
 		return false;
