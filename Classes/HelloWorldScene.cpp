@@ -3,9 +3,8 @@
 USING_NS_CC;
 
 HelloWorld::HelloWorld()
+	: m_TestSprite(NULL)	// 初期化
 {
-	// 初期化
-	m_TestSprite = Sprite::create("Koala.jpg");
 }
 
 Scene* HelloWorld::createScene()
@@ -77,6 +76,8 @@ bool HelloWorld::init()
 
 	// add the sprite as a child to this layer
 	this->addChild(sprite, 0);
+
+	m_TestSprite = Sprite::create("Koala.jpg");
 
 	m_TestSprite->setPosition(Vec2(m_TestSprite->getContentSize().width / 2, visibleSize.height / 2 + origin.y));
 
