@@ -6,6 +6,8 @@
 class HelloWorld : public cocos2d::Layer
 {
 public:
+	HelloWorld();
+
     static cocos2d::Scene* createScene();
 
     virtual bool init();
@@ -13,15 +15,14 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
 
-	//void HelloWorld::deleteSprite(Ref* pSender, CCSprite* sprite);
+	// ボタンを押した際、テスト画像を消す処理
+	void deleteTestSprite(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 
 private:
-	//bool		m_ButtonActive;
-	//CCSprite*	m_TestSprite;
-	//CCSprite*	m_ButtonSprite;
+	cocos2d::Sprite*	m_TestSprite;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
