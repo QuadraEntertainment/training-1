@@ -2,6 +2,7 @@
 #include "FilePath_generated.h"
 
 #include "HelloWorldScene.h"
+#include "proj.win32\title.h"
 
 USING_NS_CC;
 
@@ -80,7 +81,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	addAllDirectoriesFilePath();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    //auto scene = HelloWorld::createScene();
+	auto scene = CTitle::createScene();
 
     // run
     director->runWithScene(scene);
