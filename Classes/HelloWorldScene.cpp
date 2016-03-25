@@ -44,7 +44,7 @@ bool HelloWorld::init()
                                 origin.y + closeItem->getContentSize().height/2));
 
     // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
+    auto menu = Menu::create(closeItem, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
@@ -91,7 +91,7 @@ bool HelloWorld::init()
 
 	buttonItem->setPosition(Vec2(visibleSize.width - buttonItem->getContentSize().width / 2, visibleSize.height/2 + origin.y));
 	//メニューを作成 自動解放オブジェクト
-	auto button_menu = Menu::create(buttonItem, NULL);
+	auto button_menu = Menu::create(buttonItem, nullptr);
 
 	button_menu->setPosition(Point::ZERO);
 	// メニューを追加
