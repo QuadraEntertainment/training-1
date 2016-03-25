@@ -42,8 +42,8 @@ bool HelloWorld::init()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin( );
 
 	// 端末ごとのサイズ差によるズレを考慮した画面サイズ
-	Vec2 visibleSizeOrigin = (Vec2)visibleSize + origin;
-	Vec2 visibleCenterOrigin = (Vec2)visibleCenter + origin;
+	Vec2 visibleSizeOrigin(visibleSize.width + origin.x, visibleSize.height + origin.y);
+	Vec2 visibleCenterOrigin(visibleCenter.width + origin.x, visibleCenter.height + origin.y);
 
 	/////////////////////////////
 	// 2. add a menu item with "X" image, which is clicked to quit the program
