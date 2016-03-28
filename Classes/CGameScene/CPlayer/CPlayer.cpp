@@ -9,25 +9,10 @@ CPlayer::CPlayer()
 {
 }
 
-CPlayer::~CPlayer()
-{
-	delete m_Instance;
-	m_Instance = nullptr;
-}
-
-CPlayer* CPlayer::getInstance()
-{
-	if (!m_Instance) {
-		m_Instance = new CPlayer;
-	}
-
-	return m_Instance;
-}
-
 // ‰Šú‰»
 bool CPlayer::init()
 {
-	if (!Layer::init()) {
+	if (!Sprite::init()) {
 		return false;
 	}
 

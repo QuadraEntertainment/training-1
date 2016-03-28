@@ -3,15 +3,10 @@
 
 #include "cocos2d.h"
 
-class CPlayer : public  cocos2d::Layer
 class CPlayer : public  cocos2d::Sprite
 {
 public:
 	CPlayer();
-
-	~CPlayer();
-
-	static CPlayer*	getInstance();
 
 	virtual bool init() override;
 

@@ -32,7 +32,7 @@ bool CGameScene::init()
 	//this->addChild(label, 1);
 
 	// ƒvƒŒƒCƒ„[‚Ì‰Šú‰»
-	CPlayer* player = CPlayer::getInstance();
+	CPlayer* player = CPlayer::create();
 
 	player->init();
 	this->addChild(player);
