@@ -4,6 +4,7 @@
 #include "HelloWorldScene.h"
 
 #include "CTitleScene\CTitleScene.h" 
+#include "CGameScene\CGameScene.h"
 
 USING_NS_CC;
 
@@ -82,8 +83,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	addAllDirectoriesFilePath();
 
     // create a scene. it's an autorelease object
-    //auto scene = HelloWorld::createScene();
-	auto scene = CTitleScene::createScene();
+    auto scene = CTitleScene::createScene();
+	//auto scene = CGameScene::createScene();
 
     // run
     director->runWithScene(scene);
