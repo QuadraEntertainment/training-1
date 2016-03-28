@@ -15,4 +15,4 @@ public:
 	CREATE_FUNC(CTitleScene);
 };
 
-#endif // __TITLE_SCENE_H__
+#endif // __CTITLE_SCENE_H__

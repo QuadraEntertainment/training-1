@@ -11,8 +11,10 @@ public:
 	static cocos2d::Scene* createScene();
 
 	virtual bool init() override;
+	
+	void playerCreate();
 
 	CREATE_FUNC(CGameScene);
 };
 
-#endif // __GAME_SCENE_H__
+#endif // __CGAME_SCENE_H__
