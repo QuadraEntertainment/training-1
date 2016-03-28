@@ -36,7 +36,7 @@
     <ClCompile Include="..\Classes\CTitleScene\CTitleScene.cpp">
       <Filter>src\CTitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayer.cpp">
+    <ClCompile Include="..\Classes\CGameScene\CPlayer\CPlayer.cpp">
       <Filter>src\CGameScene\CPlayer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +56,7 @@
     <ClInclude Include="..\Classes\CTitleScene\CTitleScene.h">
       <Filter>src\CTitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayer.h">
+    <ClInclude Include="..\Classes\CGameScene\CPlayer\CPlayer.h">
       <Filter>src\CGameScene\CPlayer</Filter>
     </ClInclude>
   </ItemGroup>

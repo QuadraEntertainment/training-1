@@ -1,5 +1,5 @@
 #include "CGameScene.h"
-#include "proj.win32\CPlayer.h"
+#include "CPlayer\CPlayer.h"
 
 USING_NS_CC;
 
