@@ -13,7 +13,6 @@ public:
 	CREATE_FUNC(CPlayer);
 
 private:
-	static CPlayer*		m_Instance;
 	cocos2d::Sprite*	m_Sprite;
 };
 

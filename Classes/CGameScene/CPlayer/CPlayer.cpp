@@ -2,8 +2,6 @@
 
 USING_NS_CC;
 
-CPlayer* CPlayer::m_Instance = nullptr;
-
 CPlayer::CPlayer()
 	: m_Sprite(nullptr)
 {
