@@ -25,10 +25,18 @@ bool CGameScene::init()
 		return false;
 	}
 
-	// プレイヤーの初期化
-	CPlayer* player = CPlayer::create();
-
-	this->addChild(player,0);
+	playerCreate();
 
 	return true;
+}
+
+// プレイヤー生成
+void CGameScene::playerCreate()
+{
+	// プレイヤーの初期設定
+	CPlayer* player = CPlayer::create();
+
+	Size visibleCenter = Director::getInstance()->getVisibleSize() / 2;
+	player->setPosition(Vec2(visibleCenter.width, player->getContentSize().height/2));
+	this->addChild(player, 0);
 }
