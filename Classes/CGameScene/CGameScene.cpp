@@ -1,4 +1,5 @@
 #include "CGameScene.h"
+#include "proj.win32\CPlayer.h"
 
 USING_NS_CC;
 
@@ -24,12 +25,17 @@ bool CGameScene::init()
 		return false;
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize() / 2;
+	// ゲームシーンが表示できているかのテスト
+	//Size visibleSize = Director::getInstance()->getVisibleSize() / 2;
+	//auto label = Label::createWithTTF("Game", "fonts/Marker Felt.ttf", 24);
+	//label->setPosition(visibleSize);
+	//this->addChild(label, 1);
 
-	// タイトルが表示できているかのテスト
-	auto label = Label::createWithTTF("Game", "fonts/Marker Felt.ttf", 24);
-	label->setPosition(visibleSize);
-	this->addChild(label, 1);
+	// プレイヤーの初期化
+	CPlayer* player = CPlayer::getInstance();
+
+	player->init();
+	this->addChild(player);
 
 	return true;
 }
