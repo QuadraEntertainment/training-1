@@ -2,7 +2,8 @@
 #include "FilePath_generated.h"
 
 #include "HelloWorldScene.h"
-#include "CTitleScene.h"
+
+#include "CTitleScene\CTitleScene.h" 
 
 USING_NS_CC;
 
