@@ -11,9 +11,6 @@ public:
 	virtual bool init() override;
 
 	CREATE_FUNC(CPlayer);
-
-private:
-	cocos2d::Sprite*	m_Sprite;
 };
 
 #endif // __CPLAYER_H__
