@@ -10,6 +10,12 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\CGameScene">
+      <UniqueIdentifier>{f93b3cbc-c98a-44bf-a353-3632688a6896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CTitleScene">
+      <UniqueIdentifier>{7b56f536-b77f-4d43-b103-0cb8d7d171c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,8 +27,11 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CTitleScene.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\CGameScene\CGameScene.cpp">
+      <Filter>src\CGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CTitleScene\CTitleScene.cpp">
+      <Filter>src\CTitleScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -35,8 +44,11 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CTitleScene.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\CGameScene\CGameScene.h">
+      <Filter>src\CGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CTitleScene\CTitleScene.h">
+      <Filter>src\CTitleScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
