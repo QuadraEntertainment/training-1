@@ -25,17 +25,11 @@ bool CGameScene::init()
 		return false;
 	}
 
-	// ゲームシーンが表示できているかのテスト
-	//Size visibleSize = Director::getInstance()->getVisibleSize() / 2;
-	//auto label = Label::createWithTTF("Game", "fonts/Marker Felt.ttf", 24);
-	//label->setPosition(visibleSize);
-	//this->addChild(label, 1);
-
 	// プレイヤーの初期化
 	CPlayer* player = CPlayer::create();
 
 	player->init();
-	this->addChild(player);
+	this->addChild(player,0);
 
 	return true;
 }
