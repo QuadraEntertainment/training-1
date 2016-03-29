@@ -12,7 +12,11 @@ public:
 
 	virtual bool init() override;
 	
+	void addListernerForControl();
+
 	void playerCreate();
+
+	void bulletCreate();
 
 	CREATE_FUNC(CGameScene);
 };
