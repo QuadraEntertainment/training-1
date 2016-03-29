@@ -12,7 +12,7 @@ public:
 
 	virtual void update(float delta) override;
 
-	void control();
+	void addListernerForControl();
 
 	void move();
 

@@ -17,7 +17,7 @@ bool CPlayer::init()
 
 	this->initWithFile("Player.png");
 
-	control();
+	addListernerForControl();
 
 	this->scheduleUpdate();
 
@@ -34,8 +34,8 @@ void CPlayer::update(float delta)
 	moveLimit();
 }
 
-// ����
-void CPlayer::control()
+// 操作
+void CPlayer::addListernerForControl()
 {
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 	auto listener = EventListenerKeyboard::create();
