@@ -67,12 +67,16 @@ void CPlayer::control()
 // 移動
 void CPlayer::move()
 {
+	Vec2 pos = this->getPosition();
+
 	switch (m_MoveDirection)
 	{
-	case eMOVE_DIRECTION_RIGHT:	this->runAction(MoveBy::create(0.0f, Vec2(m_Speed, 0.0f))); break;
-	case eMOVE_DIRECTION_LEFT:	this->runAction(MoveBy::create(0.0f, Vec2(-m_Speed, 0.0f))); break;
+	case eMOVE_DIRECTION::RIGHT:	pos.x += m_Speed;	break;
+	case eMOVE_DIRECTION::LEFT:		pos.x -= m_Speed;	break;
 	default:	break;
 	}
+
+	this->setPosition(pos);
 }
 
 // 移動制限
