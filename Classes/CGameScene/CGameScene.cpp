@@ -37,8 +37,6 @@ void CGameScene::playerCreate()
 	CPlayer* player = CPlayer::create();
 
 	Size visibleCenter = Director::getInstance()->getVisibleSize() / 2;
-
 	player->setPosition(Vec2(visibleCenter.width, player->getContentSize().height/2));
-
 	this->addChild(player, 0);
 }
