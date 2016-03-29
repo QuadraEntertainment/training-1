@@ -12,7 +12,7 @@ public:
 
 	virtual void update(float delta) override;
 
-	void move();
+	void move(float delta);
 
 	CREATE_FUNC(CBullet);
 

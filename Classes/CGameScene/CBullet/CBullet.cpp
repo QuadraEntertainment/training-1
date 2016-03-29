@@ -25,15 +25,15 @@ bool CBullet::init()
 void CBullet::update(float delta)
 {
 	// 移動
-	move();
+	move(delta);
 }
 
 // 移動
-void CBullet::move()
+void CBullet::move(float delta)
 {
 	Vec2 pos = this->getPosition();
 
-	pos.y += m_Speed;
+	pos.y += m_Speed * 100 * delta;
 
 	this->setPosition(pos);
 }
