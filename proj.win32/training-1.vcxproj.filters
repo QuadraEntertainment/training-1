@@ -68,6 +68,9 @@
     <ClInclude Include="..\Classes\CGameScene\CBullet\CBullet.h">
       <Filter>src\CGameScene\CBullet</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\TagList.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

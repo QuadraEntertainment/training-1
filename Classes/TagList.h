@@ -1,0 +1,5 @@
+enum eTAG_LIST
+{
+	eTAG_LIST_PLAYER
+	, eTAG_LIST_BULLET
+};
