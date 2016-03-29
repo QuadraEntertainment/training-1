@@ -1,4 +1,4 @@
-#ifndef __CPLAYER_H__
+ï»¿#ifndef __CPLAYER_H__
 #define __CPLAYER_H__
 
 #include "cocos2d.h"
@@ -20,15 +20,15 @@ public:
 
 	CREATE_FUNC(CPlayer);
 private:
-	// ˆÚ“®•ûŒü
-	enum eMOVE_DIRECTION{
-		eMOVE_DIRECTION_NONE
-		, eMOVE_DIRECTION_RIGHT
-		, eMOVE_DIRECTION_LEFT
+	// ç§»å‹•æ–¹å‘
+	enum class eMOVE_DIRECTION {
+		NONE
+		, RIGHT
+		, LEFT
 	};
 
-	eMOVE_DIRECTION	m_MoveDirection;	// ˆÚ“®•ûŒü
-	float			m_Speed;			// ˆÚ“®‘¬“x
+	eMOVE_DIRECTION	m_MoveDirection;	// ç§»å‹•æ–¹å‘
+	float			m_Speed;			// ç§»å‹•é€Ÿåº¦
 };
 
 #endif // __CPLAYER_H__

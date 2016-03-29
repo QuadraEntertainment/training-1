@@ -1,14 +1,14 @@
-#include "CPlayer.h"
+ï»¿#include "CPlayer.h"
 
 USING_NS_CC;
 
 CPlayer::CPlayer()
 	: m_Speed(5.0f)
-	, m_MoveDirection(eMOVE_DIRECTION_NONE)
+	, m_MoveDirection(eMOVE_DIRECTION::NONE)
 {
 }
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 bool CPlayer::init()
 {
 	if (!Sprite::init()) {
@@ -24,39 +24,39 @@ bool CPlayer::init()
 	return true;
 }
 
-// XV
+// æ›´æ–°
 void CPlayer::update(float delta)
 {
-	// ˆÚ“®
+	// ç§»å‹•
 	move();
 
-	// ˆÚ“®§ŒÀ
+	// ç§»å‹•åˆ¶é™
 	moveLimit();
 }
 
-// ‘€ì
+// ï¿½ï¿½ï¿½ï¿½
 void CPlayer::control()
 {
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 	auto listener = EventListenerKeyboard::create();
 
-	// ¶‰EƒL[‚ð‰Ÿ‚µ‚½ŽžAˆÚ“®‚ðŠJŽn‚·‚é
+	// å·¦å³ã‚­ãƒ¼ã‚’æŠ¼ã—ãŸæ™‚ã€ç§»å‹•ã‚’é–‹å§‹ã™ã‚‹
 	listener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event) {
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
-			m_MoveDirection = eMOVE_DIRECTION_RIGHT;
+			m_MoveDirection = eMOVE_DIRECTION::RIGHT;
 		}
 		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
-			m_MoveDirection = eMOVE_DIRECTION_LEFT;
+			m_MoveDirection = eMOVE_DIRECTION::LEFT;
 		}
 	};
 
-	// ¶‰EƒL[‚ð—£‚µ‚½ŽžAˆÚ“®‚ð‚â‚ß‚é‚æ‚¤‚É‚·‚é
+	// å·¦å³ã‚­ãƒ¼ã‚’é›¢ã—ãŸæ™‚ã€ç§»å‹•ã‚’ã‚„ã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹
 	listener->onKeyReleased = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW && m_MoveDirection == eMOVE_DIRECTION_RIGHT) {
-			m_MoveDirection = eMOVE_DIRECTION_NONE;
+		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW && m_MoveDirection == eMOVE_DIRECTION::RIGHT) {
+			m_MoveDirection = eMOVE_DIRECTION::NONE;
 		}
-		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && m_MoveDirection == eMOVE_DIRECTION_LEFT) {
-			m_MoveDirection = eMOVE_DIRECTION_NONE;
+		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && m_MoveDirection == eMOVE_DIRECTION::LEFT) {
+			m_MoveDirection = eMOVE_DIRECTION::NONE;
 		}
 	};
 
@@ -64,7 +64,7 @@ void CPlayer::control()
 	this->scheduleUpdate();
 }
 
-// ˆÚ“®
+// ç§»å‹•
 void CPlayer::move()
 {
 	switch (m_MoveDirection)
@@ -75,7 +75,7 @@ void CPlayer::move()
 	}
 }
 
-// ˆÚ“®§ŒÀ
+// ç§»å‹•åˆ¶é™
 void CPlayer::moveLimit()
 {
 	Vec2 pos = this->getPosition();
