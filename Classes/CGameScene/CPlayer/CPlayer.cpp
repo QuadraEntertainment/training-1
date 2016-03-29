@@ -1,4 +1,5 @@
 ﻿#include "CPlayer.h"
+#include "CGameScene\CBullet\CBullet.h"
 
 USING_NS_CC;
 
@@ -40,8 +41,16 @@ void CPlayer::addListernerForControl()
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 	auto listener = EventListenerKeyboard::create();
 
-	// 左右キーを押した時、移動を開始する
 	listener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event) {
+		// Zキーを押した時、弾を発射する
+		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_Z) {
+			CBullet* bullet = CBullet::create();
+			bullet->setPosition(this->getContentSize() / 2);
+
+			this->addChild(bullet, 1);
+		}
+
+		// 左右キーを押した時、移動を開始する
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
 			m_MoveDirection = eMOVE_DIRECTION::RIGHT;
 		}
