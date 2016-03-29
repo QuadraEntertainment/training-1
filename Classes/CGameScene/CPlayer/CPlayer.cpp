@@ -61,7 +61,6 @@ void CPlayer::addListernerForControl()
 	};
 
 	dispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-	this->scheduleUpdate();
 }
 
 // 移動
