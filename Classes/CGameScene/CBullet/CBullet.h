@@ -21,11 +21,13 @@ public:
 
 	void move(float delta);
 
+	float getRadius();
 
 	eBULLET_TYPE getBulletType();
 
 private:
 	float m_Speed;			// 移動速度
+	float m_Radius;			// 半径
 	eBULLET_TYPE m_Type;	// 種類
 };
 

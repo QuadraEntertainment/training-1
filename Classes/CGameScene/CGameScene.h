@@ -15,6 +15,8 @@ public:
 	static cocos2d::Scene* createScene();
 
 	virtual bool init() override;
+
+	virtual void update(float delta) override;
 	
 	void addListernerForControl();
 
@@ -27,6 +29,8 @@ public:
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	
+	void enemyAndBulletCollision();
 
 	CREATE_FUNC(CGameScene);
 

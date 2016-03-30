@@ -28,6 +28,8 @@ bool CBullet::init(eBULLET_TYPE type)
 	this->initWithFile("Bullet.png");
 	this->setTag(static_cast<int>(TagList::eNODE_TAG_LIST::BULLET));
 
+	// 半径の計算（画像の縦横のサイズの平均値）
+	m_Radius = (this->getContentSize().width + this->getContentSize().height) / 2 / 2;
 	m_Type = type;
 
 	this->scheduleUpdate();
@@ -51,6 +53,13 @@ void CBullet::move(float delta)
 
 	this->setPosition(pos);
 }
+
+// 半径取得
+float CBullet::getRadius()
+{
+	return m_Radius;
+}
+
 CBullet::eBULLET_TYPE CBullet::getBulletType()
 {
 	return m_Type;
