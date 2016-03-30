@@ -2,7 +2,7 @@
 
 USING_NS_CC;
 
-// ‰Šú‰»
+// åˆæœŸåŒ–ã€€
 bool CEnemy::init()
 {
 	if (!Sprite::init()) {
