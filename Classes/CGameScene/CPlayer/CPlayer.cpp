@@ -1,4 +1,5 @@
 ﻿#include "CPlayer.h"
+#include "CGameScene\CBullet\CBullet.h"
 
 USING_NS_CC;
 
@@ -17,8 +18,6 @@ bool CPlayer::init()
 
 	this->initWithFile("Player.png");
 
-	addListernerForControl();
-
 	this->scheduleUpdate();
 
 	return true;
@@ -32,35 +31,6 @@ void CPlayer::update(float delta)
 
 	// 移動制限
 	moveLimit();
-}
-
-// 操作
-void CPlayer::addListernerForControl()
-{
-	auto dispatcher = Director::getInstance()->getEventDispatcher();
-	auto listener = EventListenerKeyboard::create();
-
-	// 左右キーを押した時、移動を開始する
-	listener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
-			m_MoveDirection = eMOVE_DIRECTION::RIGHT;
-		}
-		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
-			m_MoveDirection = eMOVE_DIRECTION::LEFT;
-		}
-	};
-
-	// 左右キーを離した時、移動をやめるようにする
-	listener->onKeyReleased = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW && m_MoveDirection == eMOVE_DIRECTION::RIGHT) {
-			m_MoveDirection = eMOVE_DIRECTION::NONE;
-		}
-		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && m_MoveDirection == eMOVE_DIRECTION::LEFT) {
-			m_MoveDirection = eMOVE_DIRECTION::NONE;
-		}
-	};
-
-	dispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // 移動
@@ -88,4 +58,16 @@ void CPlayer::moveLimit()
 	pos.x = std::max(pos.x, 0.0f + centerSize.x);
 
 	this->setPosition(pos);
+}
+
+// 移動方向取得
+CPlayer::eMOVE_DIRECTION CPlayer::getMoveDirection()
+{
+	return m_MoveDirection;
+}
+
+// 移動方向設定
+void CPlayer::setMoveDirection(eMOVE_DIRECTION direction)
+{
+	m_MoveDirection = direction;
 }

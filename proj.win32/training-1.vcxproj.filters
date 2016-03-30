@@ -19,6 +19,9 @@
     <Filter Include="src\CGameScene\CPlayer">
       <UniqueIdentifier>{ebf12053-b58b-4db1-a9f9-866da307c452}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\CGameScene\CBullet">
+      <UniqueIdentifier>{7f3d98d6-e760-428e-87e1-d0b1fcabb1ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="..\Classes\CGameScene\CPlayer\CPlayer.cpp">
       <Filter>src\CGameScene\CPlayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CGameScene\CBullet\CBullet.cpp">
+      <Filter>src\CGameScene\CBullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -58,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CGameScene\CPlayer\CPlayer.h">
       <Filter>src\CGameScene\CPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CGameScene\CBullet\CBullet.h">
+      <Filter>src\CGameScene\CBullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
