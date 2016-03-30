@@ -2,7 +2,9 @@
 #define __CGAME_SCENE_H__
 
 #include "cocos2d.h"
+
 #include "CPlayer\CPlayer.h"
+#include "CBullet\CBullet.h"
 #include "CEnemy\CEnemy.h"
 
 class CGameScene : public  cocos2d::Layer
@@ -20,7 +22,7 @@ public:
 
 	void enemyCreate();
 
-	void bulletCreate();
+	void bulletCreate(CBullet::eBULLET_TYPE type);
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 

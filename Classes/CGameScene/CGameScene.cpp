@@ -1,5 +1,6 @@
 ﻿#include "CGameScene.h"
-#include "CBullet\CBullet.h"
+
+#include "TagList.h"
 
 USING_NS_CC;
 
@@ -61,10 +62,10 @@ void CGameScene::enemyCreate()
 
 
 // 弾生成
-void CGameScene::bulletCreate()
+void CGameScene::bulletCreate(CBullet::eBULLET_TYPE type)
 {
 	// 弾の初期設定
-	CBullet* bullet = CBullet::create();
+	CBullet* bullet = CBullet::create(type);
 
 	// プレイヤーの位置から弾を出すようにする
 	bullet->setPosition(m_Player->getPosition());
@@ -89,7 +90,7 @@ void CGameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	// Zキーを押した時、弾を発射する
 	if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_Z) {
-		bulletCreate();
+		bulletCreate(CBullet::eBULLET_TYPE::PLAYER);
 	}
 
 	// 左右キーを押した時、プレイヤーの移動を開始する

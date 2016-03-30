@@ -6,18 +6,27 @@
 class CBullet : public  cocos2d::Sprite
 {
 public:
+	// 弾の種類
+	enum class eBULLET_TYPE {
+		PLAYER
+	};
+
 	CBullet();
 
-	virtual bool init() override;
+	static CBullet* create(eBULLET_TYPE type);
+
+	virtual bool init(eBULLET_TYPE type);
 
 	virtual void update(float delta) override;
 
 	void move(float delta);
 
-	CREATE_FUNC(CBullet);
+
+	eBULLET_TYPE getBulletType();
 
 private:
-	float			m_Speed;			// 移動速度
+	float m_Speed;			// 移動速度
+	eBULLET_TYPE m_Type;	// 種類
 };
 
 #endif // __CBULLET_H__

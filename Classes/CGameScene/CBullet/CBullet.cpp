@@ -9,8 +9,17 @@ CBullet::CBullet()
 {
 }
 
+CBullet* CBullet::create(CBullet::eBULLET_TYPE type)
+{
+	auto bullet = new CBullet();
+	bullet->init(type);
+	bullet->autorelease();
+
+	return bullet;
+}
+
 // 初期化
-bool CBullet::init()
+bool CBullet::init(eBULLET_TYPE type)
 {
 	if (!Sprite::init()) {
 		return false;
@@ -18,6 +27,8 @@ bool CBullet::init()
 
 	this->initWithFile("Bullet.png");
 	this->setTag(static_cast<int>(TagList::eNODE_TAG_LIST::BULLET));
+
+	m_Type = type;
 
 	this->scheduleUpdate();
 
@@ -39,4 +50,8 @@ void CBullet::move(float delta)
 	pos.y += m_Speed * delta;
 
 	this->setPosition(pos);
+}
+CBullet::eBULLET_TYPE CBullet::getBulletType()
+{
+	return m_Type;
 }
