@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "CPlayer\CPlayer.h"
+#include "CEnemy\CEnemy.h"
 
 class CGameScene : public  cocos2d::Layer
 {
@@ -29,6 +30,7 @@ public:
 
 private:
 	CPlayer*	m_Player;
+	CEnemy*		m_Enemy;
 };
 
 #endif // __CGAME_SCENE_H__

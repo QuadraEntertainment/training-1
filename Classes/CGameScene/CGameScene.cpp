@@ -1,6 +1,5 @@
 ﻿#include "CGameScene.h"
 #include "CBullet\CBullet.h"
-#include "CEnemy\CEnemy.h"
 
 USING_NS_CC;
 
@@ -51,13 +50,13 @@ void CGameScene::playerCreate()
 void CGameScene::enemyCreate()
 {
 	// 弾の初期設定
-	CEnemy* enemy = CEnemy::create();
+	m_Enemy = CEnemy::create();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	enemy->setPosition(Vec2(visibleSize.width/2, visibleSize.height - enemy->getContentSize().height/2));
+	m_Enemy->setPosition(Vec2(visibleSize.width/2, visibleSize.height - m_Enemy->getContentSize().height/2));
 
-	this->addChild(enemy, 0);
+	this->addChild(m_Enemy, 0);
 }
 
 
