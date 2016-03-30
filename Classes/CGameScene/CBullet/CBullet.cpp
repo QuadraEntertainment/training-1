@@ -1,5 +1,7 @@
 ﻿#include "CBullet.h"
 
+#include "TagList.h"
+
 USING_NS_CC;
 
 CBullet::CBullet()
@@ -15,6 +17,7 @@ bool CBullet::init()
 	}
 
 	this->initWithFile("Bullet.png");
+	this->setTag(static_cast<int>(TagList::eNODE_TAG_LIST::BULLET));
 
 	this->scheduleUpdate();
 
