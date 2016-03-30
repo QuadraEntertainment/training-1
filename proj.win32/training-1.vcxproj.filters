@@ -22,6 +22,9 @@
     <Filter Include="src\CGameScene\CBullet">
       <UniqueIdentifier>{7f3d98d6-e760-428e-87e1-d0b1fcabb1ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\CGameScene\CEnemy">
+      <UniqueIdentifier>{ae1fe987-0e20-497f-9fb6-892dfa312e9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +48,9 @@
     <ClCompile Include="..\Classes\CGameScene\CBullet\CBullet.cpp">
       <Filter>src\CGameScene\CBullet</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CGameScene\CEnemy\CEnemy.cpp">
+      <Filter>src\CGameScene\CEnemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CGameScene\CBullet\CBullet.h">
       <Filter>src\CGameScene\CBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CGameScene\CEnemy\CEnemy.h">
+      <Filter>src\CGameScene\CEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
