@@ -1,8 +1,6 @@
 ﻿#include "CPlayer.h"
 #include "CGameScene\CBullet\CBullet.h"
 
-#include "TagList.h"
-
 USING_NS_CC;
 
 CPlayer::CPlayer()
@@ -19,7 +17,6 @@ bool CPlayer::init()
 	}
 
 	this->initWithFile("Player.png");
-	this->setTag(eTAG_LIST_PLAYER);
 
 	this->scheduleUpdate();
 

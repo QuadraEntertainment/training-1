@@ -1,7 +1,8 @@
-#ifndef __CGAME_SCENE_H__
+﻿#ifndef __CGAME_SCENE_H__
 #define __CGAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "CPlayer\CPlayer.h"
 
 class CGameScene : public  cocos2d::Layer
 {
@@ -19,6 +20,9 @@ public:
 	void bulletCreate();
 
 	CREATE_FUNC(CGameScene);
+
+private:
+	CPlayer*	m_Player;
 };
 
 #endif // __CGAME_SCENE_H__

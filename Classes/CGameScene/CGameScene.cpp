@@ -1,8 +1,5 @@
-#include "CGameScene.h"
-#include "CPlayer\CPlayer.h"
+ï»¿#include "CGameScene.h"
 #include "CBullet\CBullet.h"
-
-#include "TagList.h"
 
 USING_NS_CC;
 
@@ -10,7 +7,7 @@ CGameScene::CGameScene()
 {
 }
 
-// ƒV[ƒ“‚Ìì¬
+// ã‚·ãƒ¼ãƒ³ã®ä½œæˆ
 Scene* CGameScene::createScene()
 {
 	auto scene = Scene::create();
@@ -21,7 +18,7 @@ Scene* CGameScene::createScene()
 	return scene;
 }
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 bool CGameScene::init()
 {
 	if (!Layer::init()) {
@@ -35,65 +32,62 @@ bool CGameScene::init()
 	return true;
 }
 
-// ƒvƒŒƒCƒ„[¶¬
+// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”Ÿæˆ
 void CGameScene::playerCreate()
 {
-	// ƒvƒŒƒCƒ„[‚Ì‰ŠúÝ’è
-	CPlayer* player = CPlayer::create();
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åˆæœŸè¨­å®š
+	m_Player = CPlayer::create();
 
 	Size visibleCenter = Director::getInstance()->getVisibleSize() / 2;
 
-	player->setPosition(Vec2(visibleCenter.width, player->getContentSize().height/2));
+	m_Player->setPosition(Vec2(visibleCenter.width, m_Player->getContentSize().height/2));
 
-	this->addChild(player, 0);
+	this->addChild(m_Player, 0);
 }
 
-// ’e¶¬
+// å¼¾ç”Ÿæˆ
 void CGameScene::bulletCreate()
 {
-	// ’e‚Ì‰ŠúÝ’è
+	// å¼¾ã®åˆæœŸè¨­å®š
 	CBullet* bullet = CBullet::create();
 
-	// ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚©‚ç’e‚ðo‚·‚æ‚¤‚É‚·‚é
-	Node* player = this->getChildByTag(eTAG_LIST_PLAYER);
-	bullet->setPosition(player->getPosition());
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½ç½®ã‹ã‚‰å¼¾ã‚’å‡ºã™ã‚ˆã†ã«ã™ã‚‹
+	bullet->setPosition(m_Player->getPosition());
 
 	this->addChild(bullet, 1);
 }
 
-// ‘€ì
+// æ“ä½œ
 void CGameScene::addListernerForControl()
 {
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 	auto listener = EventListenerKeyboard::create();
 
 	listener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		// ZƒL[‚ð‰Ÿ‚µ‚½ŽžA’e‚ð”­ŽË‚·‚é
+		// Zã‚­ãƒ¼ã‚’æŠ¼ã—ãŸæ™‚ã€å¼¾ã‚’ç™ºå°„ã™ã‚‹
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_Z) {
 			bulletCreate();
 		}
-
-		CPlayer* player = (CPlayer*)this->getChildByTag(eTAG_LIST_PLAYER);
-
-		// ¶‰EƒL[‚ð‰Ÿ‚µ‚½ŽžAƒvƒŒƒCƒ„[‚ÌˆÚ“®‚ðŠJŽn‚·‚é
+		
+		// å·¦å³ã‚­ãƒ¼ã‚’æŠ¼ã—ãŸæ™‚ã€ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•ã‚’é–‹å§‹ã™ã‚‹
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
-			player->setMoveDirection(CPlayer::eMOVE_DIRECTION::RIGHT);
+			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::RIGHT);
 		}
 		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
-			player->setMoveDirection(CPlayer::eMOVE_DIRECTION::LEFT);
+			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::LEFT);
 		}
 	};
 
-	// ¶‰EƒL[‚ð—£‚µ‚½ŽžAˆÚ“®‚ð‚â‚ß‚é‚æ‚¤‚É‚·‚é
+	// å·¦å³ã‚­ãƒ¼ã‚’é›¢ã—ãŸæ™‚ã€ç§»å‹•ã‚’ã‚„ã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹
 	listener->onKeyReleased = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		CPlayer* player = (CPlayer*)this->getChildByTag(eTAG_LIST_PLAYER);
-		CPlayer::eMOVE_DIRECTION direction = player->getMoveDirection();
-
+		// å·¦å³ã‚­ãƒ¼ã‚’é›¢ã—ãŸæ™‚ã€ç§»å‹•ã‚’ã‚„ã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹
+		CPlayer::eMOVE_DIRECTION direction = m_Player->getMoveDirection();
+		
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW && direction == CPlayer::eMOVE_DIRECTION::RIGHT) {
-			player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
+			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
 		}
 		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && direction == CPlayer::eMOVE_DIRECTION::LEFT) {
-			player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
+			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
 		}
 	};
 
