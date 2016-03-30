@@ -63,33 +63,39 @@ void CGameScene::addListernerForControl()
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 	auto listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		// Zキーを押した時、弾を発射する
-		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_Z) {
-			bulletCreate();
-		}
-		
-		// 左右キーを押した時、プレイヤーの移動を開始する
-		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
-			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::RIGHT);
-		}
-		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
-			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::LEFT);
-		}
-	};
-
-	// 左右キーを離した時、移動をやめるようにする
-	listener->onKeyReleased = [&](EventKeyboard::KeyCode keyCode, Event* event) {
-		// 左右キーを離した時、移動をやめるようにする
-		CPlayer::eMOVE_DIRECTION direction = m_Player->getMoveDirection();
-		
-		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW && direction == CPlayer::eMOVE_DIRECTION::RIGHT) {
-			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
-		}
-		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && direction == CPlayer::eMOVE_DIRECTION::LEFT) {
-			m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
-		}
-	};
+	listener->onKeyPressed = CC_CALLBACK_2(CGameScene::onKeyPressed, this);
+	listener->onKeyReleased = CC_CALLBACK_2(CGameScene::onKeyReleased, this);
 
 	dispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+// キー操作（押した時）
+void CGameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	// Zキーを押した時、弾を発射する
+	if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_Z) {
+		bulletCreate();
+	}
+
+	// 左右キーを押した時、プレイヤーの移動を開始する
+	if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
+		m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::RIGHT);
+	}
+	else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
+		m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::LEFT);
+	}
+}
+
+// キー操作（離した時）
+void CGameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	// 左右キーを離した時、移動をやめるようにする
+	CPlayer::eMOVE_DIRECTION direction = m_Player->getMoveDirection();
+
+	if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW && direction == CPlayer::eMOVE_DIRECTION::RIGHT) {
+		m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
+	}
+	else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && direction == CPlayer::eMOVE_DIRECTION::LEFT) {
+		m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
+	}
 }
