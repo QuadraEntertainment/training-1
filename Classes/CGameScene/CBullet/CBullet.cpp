@@ -3,7 +3,7 @@
 USING_NS_CC;
 
 CBullet::CBullet()
-	: m_Speed(5.0f)
+	: m_Speed(500.0f)
 {
 }
 
@@ -33,7 +33,7 @@ void CBullet::move(float delta)
 {
 	Vec2 pos = this->getPosition();
 
-	pos.y += m_Speed * 100 * delta;
+	pos.y += m_Speed * delta;
 
 	this->setPosition(pos);
 }
