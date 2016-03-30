@@ -1,5 +1,6 @@
 ﻿#include "CGameScene.h"
 #include "CBullet\CBullet.h"
+#include "CEnemy\CEnemy.h"
 
 USING_NS_CC;
 
@@ -26,6 +27,7 @@ bool CGameScene::init()
 	}
 
 	playerCreate();
+	enemyCreate();
 
 	addListernerForControl();
 
@@ -44,6 +46,20 @@ void CGameScene::playerCreate()
 
 	this->addChild(m_Player, 0);
 }
+
+// 敵生成
+void CGameScene::enemyCreate()
+{
+	// 弾の初期設定
+	CEnemy* enemy = CEnemy::create();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	enemy->setPosition(Vec2(visibleSize.width/2, visibleSize.height - enemy->getContentSize().height/2));
+
+	this->addChild(enemy, 0);
+}
+
 
 // 弾生成
 void CGameScene::bulletCreate()

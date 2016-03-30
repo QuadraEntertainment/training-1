@@ -17,6 +17,8 @@ public:
 
 	void playerCreate();
 
+	void enemyCreate();
+
 	void bulletCreate();
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
