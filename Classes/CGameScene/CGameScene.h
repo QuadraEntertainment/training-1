@@ -2,10 +2,10 @@
 #define __CGAME_SCENE_H__
 
 #include "cocos2d.h"
-
-#include "CPlayer\CPlayer.h"
 #include "CBullet\CBullet.h"
 #include "CEnemy\CEnemy.h"
+
+class CPlayer;
 
 class CGameScene : public  cocos2d::Layer
 {

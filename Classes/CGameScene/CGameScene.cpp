@@ -1,5 +1,6 @@
 ﻿#include "CGameScene.h"
 
+#include "CPlayer\CPlayer.h"
 #include "TagList.h"
 
 USING_NS_CC;
