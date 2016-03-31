@@ -35,7 +35,7 @@ bool CBullet::init(eBULLET_TYPE type)
 
 	// 半径の計算（画像の縦横のサイズの平均値）
 	m_Radius = (this->getContentSize().width + this->getContentSize().height) / 2 / 2;
-	m_Type = type;
+	m_BulletType = type;
 
 	this->scheduleUpdate();
 
@@ -60,12 +60,12 @@ void CBullet::move(float delta)
 }
 
 // 半径取得
-float CBullet::getRadius()
+const float CBullet::getRadius()
 {
 	return m_Radius;
 }
 
-CBullet::eBULLET_TYPE CBullet::getBulletType()
+const CBullet::eBULLET_TYPE CBullet::getBulletType()
 {
 	return m_Type;
 }

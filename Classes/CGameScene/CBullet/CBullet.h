@@ -21,14 +21,15 @@ public:
 
 	void move(float delta);
 
-	float getRadius();
 
-	eBULLET_TYPE getBulletType();
+	const float getRadius();
+
+	const eBULLET_TYPE getBulletType();
 
 private:
-	float m_Speed;			// 移動速度
-	float m_Radius;			// 半径
-	eBULLET_TYPE m_Type;	// 種類
+	float m_Speed;				// 移動速度
+	float m_Radius;				// 半径
+	eBULLET_TYPE m_BulletType;	// 弾の種類
 };
 
 #endif // __CBULLET_H__

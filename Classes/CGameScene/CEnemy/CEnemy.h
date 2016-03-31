@@ -8,7 +8,7 @@ class CEnemy : public  cocos2d::Sprite
 public:
 	virtual bool init() override;
 
-	float getRadius();
+	const float getRadius();
 
 	CREATE_FUNC(CEnemy);
 
