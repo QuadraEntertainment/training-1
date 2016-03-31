@@ -92,11 +92,13 @@ void CBullet::objectAndBulletCircleCollision()
 	case CBullet::eBULLET_TYPE::PLAYER: {
 		auto o = dynamic_cast<CEnemy*>(object);
 		if (o != nullptr){
-			object_r = dynamic_cast<CEnemy*>(object)->getRadius();
+			object_r = o->getRadius();
 		}
 	} break;
 	default:	break;
 	}
+
+	if (object_r <= 0.0f)	return;
 
 	// 円と円の衝突計算
 	if (pow(bulletCenter.x - objectCenter.x, 2) +
