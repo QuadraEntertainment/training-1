@@ -68,7 +68,7 @@ void CBullet::move(float delta)
 void CBullet::objectAndBulletCircleCollision()
 {
 	// 親（ゲームシーン）から子（敵）の情報を持ってくる
-	auto parent = (CGameScene*)Director::getInstance()->getRunningScene()->getChildren().at(1);
+	auto parent = static_cast<CGameScene*>(Director::getInstance()->getRunningScene()->getChildren().at(1));
 	Node* object = nullptr;
 
 	// 弾の種類に応じて判定する対象を決める
