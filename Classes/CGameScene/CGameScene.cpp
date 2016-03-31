@@ -1,11 +1,14 @@
 ﻿#include "CGameScene.h"
 
 #include "CPlayer\CPlayer.h"
+#include "CEnemy\CEnemy.h"
+
 #include "TagList.h"
 
 USING_NS_CC;
 
 CGameScene::CGameScene()
+	: m_Player(nullptr)
 {
 }
 
@@ -32,16 +35,14 @@ bool CGameScene::init()
 
 	addListernerForControl();
 
-	this->scheduleUpdate();
-
 	return true;
 }
 
 // 更新
-void CGameScene::update(float delta)
-{
-	enemyAndBulletCollision();
-}
+//void CGameScene::update(float delta)
+//{
+//
+//}
 
 // プレイヤー生成
 void CGameScene::playerCreate()
@@ -60,15 +61,14 @@ void CGameScene::playerCreate()
 void CGameScene::enemyCreate()
 {
 	// 弾の初期設定
-	m_Enemy = CEnemy::create();
+	CEnemy* enemy = CEnemy::create();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	m_Enemy->setPosition(Vec2(visibleSize.width/2, visibleSize.height - m_Enemy->getContentSize().height/2));
+	enemy->setPosition(Vec2(visibleSize.width/2, visibleSize.height - enemy->getContentSize().height/2));
 
-	this->addChild(m_Enemy, 0);
+	this->addChild(enemy, 0);
 }
-
 
 // 弾生成
 void CGameScene::bulletCreate(CBullet::eBULLET_TYPE type)
@@ -122,56 +122,5 @@ void CGameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 	else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW && direction == CPlayer::eMOVE_DIRECTION::LEFT) {
 		m_Player->setMoveDirection(CPlayer::eMOVE_DIRECTION::NONE);
-	}
-}
-
-void CGameScene::enemyAndBulletCollision()
-{
-	// 敵が消滅していれば終了
-	if (m_Enemy == nullptr)	return;
-
-	auto nodes = getChildren();
-	Vector<Node*> bullets;
-
-	// 弾の数分、ノード取得
-	for (auto node : nodes)
-	{
-		switch (node->getTag())
-		{
-		case static_cast<int>(TagList::eNODE_TAG_LIST::BULLET): bullets.pushBack(node); break;
-		default:break;
-		}
-	}
-
-	// 弾の数分、ループ
-	for (auto nodeBullet : bullets)
-	{
-		auto bullet = static_cast<CBullet*>(nodeBullet);
-
-		// 弾がなければ次の弾の処理へ
-		if (bullet == nullptr)	continue;
-
-		Point bulletCenter = bullet->getPosition();
-		Point enemyCenter = m_Enemy->getPosition();
-
-		float bullet_r = bullet->getRadius();
-		float enemy_r = m_Enemy->getRadius();
-
-		// 弾がプレイヤーの弾であれば敵と衝突
-		if (bullet->getBulletType() == CBullet::eBULLET_TYPE::PLAYER) {
-			// 円と円の衝突計算
-			if (pow(bulletCenter.x - enemyCenter.x, 2) +
-				pow(bulletCenter.y - enemyCenter.y, 2) <= pow(bullet_r + enemy_r, 2))
-			{
-				// オブジェクト削除
-				m_Enemy->removeFromParentAndCleanup(true);
-				bullet->removeFromParentAndCleanup(true);
-
-				m_Enemy = nullptr;
-				bullet = nullptr;
-
-				return;
-			}
-		}
 	}
 }

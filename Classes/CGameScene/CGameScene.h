@@ -3,7 +3,6 @@
 
 #include "cocos2d.h"
 #include "CBullet\CBullet.h"
-#include "CEnemy\CEnemy.h"
 
 class CPlayer;
 
@@ -16,7 +15,7 @@ public:
 
 	virtual bool init() override;
 
-	virtual void update(float delta) override;
+	//virtual void update(float delta) override;
 	
 	void addListernerForControl();
 
@@ -29,14 +28,11 @@ public:
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	
-	void enemyAndBulletCollision();
 
 	CREATE_FUNC(CGameScene);
 
 private:
 	CPlayer*	m_Player;
-	CEnemy*		m_Enemy;
 };
 
 #endif // __CGAME_SCENE_H__

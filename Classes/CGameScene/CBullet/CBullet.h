@@ -21,6 +21,7 @@ public:
 
 	void move(float delta);
 
+	void objectAndBulletCircleCollision();
 
 	const float getRadius();
 

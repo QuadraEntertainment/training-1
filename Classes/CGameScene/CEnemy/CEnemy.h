@@ -6,6 +6,8 @@
 class CEnemy : public  cocos2d::Sprite
 {
 public:
+	CEnemy();
+
 	virtual bool init() override;
 
 	const float getRadius();
