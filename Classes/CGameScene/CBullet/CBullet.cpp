@@ -98,12 +98,12 @@ void CBullet::objectAndBulletCircleCollision()
 }
 
 // 半径取得
-const float CBullet::getRadius()
+float CBullet::getRadius() const
 {
 	return m_Radius;
 }
 
-const CBullet::eBULLET_TYPE CBullet::getBulletType()
+CBullet::eBULLET_TYPE CBullet::getBulletType() const
 {
 	return m_BulletType;
 }

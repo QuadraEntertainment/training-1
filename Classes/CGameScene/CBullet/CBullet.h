@@ -23,9 +23,9 @@ public:
 
 	void objectAndBulletCircleCollision();
 
-	const float getRadius();
+	float getRadius() const;
 
-	const eBULLET_TYPE getBulletType();
+	eBULLET_TYPE getBulletType() const;
 
 private:
 	float m_Speed;				// 移動速度
