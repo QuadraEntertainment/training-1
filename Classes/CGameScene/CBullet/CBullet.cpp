@@ -17,14 +17,13 @@ CBullet* CBullet::create(CBullet::eBULLET_TYPE type)
 {
 	auto bullet = new CBullet();
 
-	if (bullet != nullptr && bullet->init(type)) {
+	if (bullet && bullet->init(type)) {
 		bullet->autorelease();
 		return bullet;
 	}
-	else {
-		bullet->removeFromParentAndCleanup(true);
-		return nullptr;
-	}
+
+	CC_SAFE_DELETE(bullet);
+	return nullptr;
 }
 
 // 初期化
