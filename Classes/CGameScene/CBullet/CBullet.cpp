@@ -1,6 +1,7 @@
 ﻿#include "CBullet.h"
 
 #include "CGameScene\CGameScene.h"
+#include "CGameScene\CEnemy\CEnemy.h"
 
 #include "TagList.h"
 
@@ -73,7 +74,7 @@ void CBullet::objectAndBulletCircleCollision()
 	// 弾の種類に応じて判定する対象を決める
 	switch (m_BulletType)	
 	{
-	case CBullet::eBULLET_TYPE::PLAYER: object = parent->getChildByTag(static_cast<int>(TagList::eNODE_TAG_LIST::ENEMY));
+	case CBullet::eBULLET_TYPE::PLAYER: object = parent->getChildByTag(static_cast<int>(TagList::eNODE_TAG_LIST::ENEMY));	break;
 	default:	break;
 	}
 
@@ -83,8 +84,14 @@ void CBullet::objectAndBulletCircleCollision()
 	Point bulletCenter = this->getPosition();
 	Point objectCenter = object->getPosition();
 	
-	// 半径の計算（画像の縦横のサイズの平均値から直径を取り、/2で半径にする）
-	float object_r = (object->getContentSize().width + object->getContentSize().height) / 2 / 2;
+	float object_r = 0.0f;
+
+	// 半径取得
+	switch (m_BulletType)
+	{
+	case CBullet::eBULLET_TYPE::PLAYER: object_r = dynamic_cast<CEnemy*>(object)->getRadius();	break;
+	default:	break;
+	}
 
 	// 円と円の衝突計算
 	if (pow(bulletCenter.x - objectCenter.x, 2) +
