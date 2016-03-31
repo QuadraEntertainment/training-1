@@ -12,10 +12,15 @@ CBullet::CBullet()
 CBullet* CBullet::create(CBullet::eBULLET_TYPE type)
 {
 	auto bullet = new CBullet();
-	bullet->init(type);
-	bullet->autorelease();
 
-	return bullet;
+	if (bullet != nullptr && bullet->init(type)) {
+		bullet->autorelease();
+		return bullet;
+	}
+	else {
+		bullet->removeFromParentAndCleanup(true);
+		return nullptr;
+	}
 }
 
 // 初期化
