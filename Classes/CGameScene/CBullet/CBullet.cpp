@@ -89,7 +89,7 @@ void CBullet::objectAndBulletCircleCollision()
 	// 半径取得
 	switch (m_BulletType)
 	{
-	case CBullet::eBULLET_TYPE::PLAYER: object_r = dynamic_cast<CEnemy*>(object)->getRadius();	break;
+	case CBullet::eBULLET_TYPE::PLAYER:  if (dynamic_cast<CEnemy*>(object)) { object_r = dynamic_cast<CEnemy*>(object)->getRadius(); break; }
 	default:	break;
 	}
 
